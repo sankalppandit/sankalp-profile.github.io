@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankalp Pandit — Java Backend &amp; IAM Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg:      #080e1c;
+      --surf:    #101724;
+      --bdr:     #1c2a45;
+      --indigo:  #6366f1;
+      --cyan:    #22d3ee;
+      --amber:   #f59e0b;
+      --txt:     #f1f5f9;
+      --dim:     #94a3b8;
+      --mut:     #475569;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--txt);
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Dot-grid texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(99,102,241,0.065) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ════════════════════════════ HERO ════════════════════════════ */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 44%, rgba(99,102,241,.15) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .h-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: up .65s .1s ease forwards;
+    }
+
+    .h-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 9vw, 5.6rem);
+      font-weight: 700;
+      letter-spacing: -.035em;
+      line-height: 1;
+      background: linear-gradient(130deg, var(--txt) 20%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: up .65s .25s ease forwards;
+    }
+
+    .h-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(.9rem, 2.5vw, 1.15rem);
+      color: var(--dim);
+      margin-bottom: .4rem;
+      opacity: 0;
+      animation: up .65s .38s ease forwards;
+    }
+
+    .h-role strong {
+      color: var(--indigo);
+      font-weight: 600;
+    }
+
+    .h-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .67rem;
+      color: var(--mut);
+      letter-spacing: .08em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: up .65s .48s ease forwards;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .38rem;
+      max-width: 600px;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: up .65s .62s ease forwards;
+    }
+
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .64rem;
+      padding: .28rem .72rem;
+      border-radius: 999px;
+      border: 1px solid var(--bdr);
+      background: rgba(99,102,241,.05);
+      color: var(--dim);
+      letter-spacing: .03em;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+
+    .pill:hover {
+      border-color: var(--indigo);
+      color: var(--txt);
+      background: rgba(99,102,241,.12);
+    }
+
+    .scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--mut);
+      opacity: 0;
+      animation: up .65s .82s ease forwards;
+    }
+
+    .s-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, var(--indigo), transparent);
+      animation: breathe 2.5s ease-in-out infinite;
+    }
+
+    @keyframes breathe { 0%,100%{opacity:.25} 50%{opacity:1} }
+    @keyframes up { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ════════════════════════════ TIMELINE SECTION ════════════════════════════ */
+    .tl-sec {
+      position: relative;
+      z-index: 1;
+      padding: 1rem 1.5rem 9rem;
+    }
+
+    .tl-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .66rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: .6;
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── Wrapper — houses the centre line ── */
+    .tl-wrap {
+      position: relative;
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    /*
+     * Centre line
+     * Gap from each item's edge to the line = 38px
+     * Dot diameter = 12px → radius = 6px
+     * For a left item (width = 50% - 38px, right edge at 50% - 38px):
+     *   dot right edge  = (50% - 38) + 44 = 50% + 6  ✓
+     *   dot center      = 50% + 6 - 6 = 50%           ✓
+     * Connector width   = 38 - 6 = 32px, right = -32px ✓
+     */
+    .tl-wrap::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom,
+        var(--indigo) 0%,
+        var(--cyan)   60%,
+        rgba(34,211,238,.12) 100%
+      );
+    }
+
+    /* ── Timeline Item ── */
+    .tl-item {
+      position: relative;
+      width: calc(50% - 38px);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .tl-item.left {
+      margin-right: calc(50% + 38px);
+      transform: translateX(-28px);
+    }
+
+    .tl-item.right {
+      margin-left: calc(50% + 38px);
+      transform: translateX(28px);
+    }
+
+    .tl-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ── Timeline Dot ── */
+    /* 12px diameter → radius 6px. right/left = -(38+6) = -44px → center at 50% */
+    .tl-dot {
+      position: absolute;
+      top: 22px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--indigo);
+      z-index: 3;
+    }
+
+    .tl-item.left  .tl-dot { right: -44px; }
+    .tl-item.right .tl-dot { left:  -44px; }
+
+    /* Education dot: 16px → radius 8px. right/left = -(38+8) = -46px */
+    .tl-item.edu .tl-dot {
+      width: 16px;
+      height: 16px;
+      top: 20px;
+      border-color: var(--cyan);
+    }
+    .tl-item.edu.left  .tl-dot { right: -46px; }
+    .tl-item.edu.right .tl-dot { left:  -46px; }
+
+    /* Side project dot colour */
+    .tl-item.side-proj .tl-dot { border-color: var(--amber); }
+
+    /* Dot ripple on reveal */
+    .tl-dot.pulse::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1.5px solid var(--indigo);
+      animation: ripple .7s ease-out forwards;
+    }
+
+    .tl-item.edu       .tl-dot.pulse::after { border-color: var(--cyan); }
+    .tl-item.side-proj .tl-dot.pulse::after { border-color: var(--amber); }
+
+    @keyframes ripple {
+      0%   { opacity: .85; transform: scale(1); }
+      100% { opacity: 0;   transform: scale(2.6); }
+    }
+
+    /* ── Horizontal connector: item edge → dot ── */
+    /* width = gap - radius = 38 - 6 = 32px */
+    .tl-item::after {
+      content: '';
+      position: absolute;
+      top: 28px;        /* dot center: top + radius = 22 + 6 = 28 */
+      width: 32px;
+      height: 1px;
+      background: var(--bdr);
+      transition: background .25s;
+    }
+
+    .tl-item.left::after  { right: -32px; }
+    .tl-item.right::after { left:  -32px; }
+
+    .tl-item:hover::after { background: rgba(99,102,241,.5); }
+
+    /* ── Card ── */
+    .tl-card {
+      background: var(--surf);
+      border: 1px solid var(--bdr);
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .tl-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--indigo), var(--cyan));
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .tl-item:hover .tl-card {
+      border-color: rgba(99,102,241,.38);
+      box-shadow: 0 6px 30px rgba(99,102,241,.1);
+    }
+
+    .tl-item:hover .tl-card::before { opacity: 1; }
+
+    .tl-item.edu .tl-card {
+      border-color: rgba(34,211,238,.2);
+      background: rgba(34,211,238,.025);
+    }
+
+    .tl-item.edu:hover .tl-card {
+      border-color: rgba(34,211,238,.45);
+      box-shadow: 0 6px 30px rgba(34,211,238,.08);
+    }
+
+    .tl-item.edu:hover .tl-card::before {
+      background: linear-gradient(to right, var(--cyan), rgba(34,211,238,.3));
+      opacity: 1;
+    }
+
+    .tl-item.side-proj .tl-card { border-color: rgba(245,158,11,.15); }
+
+    .tl-item.side-proj:hover .tl-card {
+      border-color: rgba(245,158,11,.4);
+      box-shadow: 0 6px 30px rgba(245,158,11,.07);
+    }
+
+    .tl-item.side-proj:hover .tl-card::before {
+      background: linear-gradient(to right, var(--amber), rgba(245,158,11,.3));
+      opacity: 1;
+    }
+
+    /* ── Card Content ── */
+    .c-badge {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem;
+      letter-spacing: .05em;
+      padding: .17rem .55rem;
+      border-radius: 999px;
+      background: rgba(245,158,11,.07);
+      border: 1px solid rgba(245,158,11,.22);
+      color: var(--amber);
+      margin-bottom: .4rem;
+    }
+
+    .c-when {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: .8;
+      margin-bottom: .32rem;
+    }
+
+    .c-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .94rem;
+      font-weight: 600;
+      color: var(--txt);
+      line-height: 1.3;
+      margin-bottom: .48rem;
+    }
+
+    .c-desc {
+      font-size: .79rem;
+      color: var(--dim);
+      line-height: 1.65;
+      margin-bottom: .72rem;
+    }
+
+    .c-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .26rem;
+    }
+
+    .c-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .57rem;
+      padding: .16rem .48rem;
+      border-radius: 999px;
+      background: rgba(99,102,241,.07);
+      border: 1px solid rgba(99,102,241,.16);
+      color: var(--indigo);
+    }
+
+    .c-tag.teal {
+      background: rgba(34,211,238,.05);
+      border-color: rgba(34,211,238,.16);
+      color: var(--cyan);
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2.5rem 1rem 3rem;
+      border-top: 1px solid var(--bdr);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .1em;
+      color: var(--mut);
+    }
+
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer a:hover { color: var(--indigo); }
+
+    /* ════════════════════════════ MOBILE ════════════════════════════ */
+    /*
+     * Mobile: single column, line on left at 22px.
+     * Items: margin-left: 50px.
+     * Dot (12px, r=6): left = -(50 - 22) + r = -28 + 6 = needs dot center at 22px
+     *   dot left edge at 50 - 34 = 16px, center = 22px ✓  → left: -34px
+     * Connector: from dot right (22+6=28) to item left (50): width=22px → left: -22px
+     */
+    @media (max-width: 640px) {
+      .tl-wrap::before {
+        left: 22px;
+        transform: none;
+      }
+
+      .tl-item.left,
+      .tl-item.right {
+        width: calc(100% - 50px);
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+        transform: translateX(-14px);
+      }
+
+      .tl-item.left .tl-dot,
+      .tl-item.right .tl-dot {
+        right: auto !important;
+        left: -34px !important;
+      }
+
+      .tl-item.edu.left .tl-dot,
+      .tl-item.edu.right .tl-dot {
+        right: auto !important;
+        left: -36px !important; /* center = 50 - 36 + 8 = 22px ✓ */
+      }
+
+      .tl-item.left::after,
+      .tl-item.right::after {
+        right: auto !important;
+        left: -22px !important;
+        width: 22px;
+      }
+    }
+
+    /* ── Reduced Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .tl-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .h-eyebrow, .h-name, .h-role, .h-meta, .pills, .scroll-cue {
+        opacity: 1 !important;
+        animation: none !important;
+      }
+
+      .s-line { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════ HERO ════════════════════════════════════ -->
+<section class="hero">
+  <p class="h-eyebrow">Portfolio · Career Timeline</p>
+  <h1 class="h-name">Sankalp Pandit</h1>
+  <p class="h-role">Java Backend Engineer &amp; <strong>IAM Specialist</strong></p>
+  <p class="h-meta">9+ years &nbsp;·&nbsp; Hewlett Packard Enterprise &nbsp;·&nbsp; Pune, India</p>
+
+  <div class="pills">
+    <span class="pill">OAuth2 / OIDC</span>
+    <span class="pill">Spring Boot</span>
+    <span class="pill">Microservices</span>
+    <span class="pill">Okta SSO</span>
+    <span class="pill">LDAP</span>
+    <span class="pill">JWT / JWKS</span>
+    <span class="pill">RBAC</span>
+    <span class="pill">Spring Security</span>
+    <span class="pill">Docker · Kubernetes</span>
+    <span class="pill">PostgreSQL</span>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll to explore</span>
+    <div class="s-line" aria-hidden="true"></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════ TIMELINE ════════════════════════════════════ -->
+<section class="tl-sec">
+  <p class="tl-label">Career Timeline &nbsp;—&nbsp; Present → Origin</p>
+
+  <div class="tl-wrap">
+
+    <!-- ① Security Score Dashboard — LEFT -->
+    <div class="tl-item left">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">HPE StoreOnce · 2023 – Present</p>
+        <h2 class="c-title">Security Score Dashboard</h2>
+        <p class="c-desc">Automated dashboard running 36 checks across access control, platform security, threat detection, and encryption. Produces a weighted 0–100 score aligned with NIST SP800-63B — giving customers instant visibility into their overall security posture.</p>
+        <div class="c-tags">
+          <span class="c-tag">NIST SP800-63B</span>
+          <span class="c-tag">Security Scoring</span>
+          <span class="c-tag">Java</span>
+          <span class="c-tag">REST APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② CyberVault — RIGHT -->
+    <div class="tl-item right">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">HPE StoreOnce · 2022 – 2023</p>
+        <h2 class="c-title">CyberVault</h2>
+        <p class="c-desc">RESTful APIs for a data isolation product enabling customers to securely isolate backup data from external threats. Covered vault mode activation, copy-mapping CRUD, and scheduled sync — built throughout with security-by-design principles.</p>
+        <div class="c-tags">
+          <span class="c-tag">REST APIs</span>
+          <span class="c-tag">Data Isolation</span>
+          <span class="c-tag">Security-by-Design</span>
+          <span class="c-tag">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ Delayed Delete — LEFT -->
+    <div class="tl-item left">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">HPE StoreOnce · 2022</p>
+        <h2 class="c-title">Delayed Delete — Ransomware Protection</h2>
+        <p class="c-desc">State machine for Delayed Delete, enforcing mandatory cooling-off periods before data destruction can proceed. Prevents both accidental and malicious data loss across enterprise backup environments.</p>
+        <div class="c-tags">
+          <span class="c-tag">State Machine</span>
+          <span class="c-tag">Ransomware Protection</span>
+          <span class="c-tag">Java</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ Dual Authorization — RIGHT -->
+    <div class="tl-item right">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">HPE StoreOnce · 2021</p>
+        <h2 class="c-title">Dual Authorization Framework</h2>
+        <p class="c-desc">Two-person approval framework for critical operations (store deletion, vault settings, compliance mode). Built a PENDING → APPROVED → EXECUTED / REJECTED / EXPIRED state machine with authorization code generation and full audit logging.</p>
+        <div class="c-tags">
+          <span class="c-tag">Authorization</span>
+          <span class="c-tag">State Machine</span>
+          <span class="c-tag">Audit Logging</span>
+          <span class="c-tag">Compliance</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ Okta SSO — LEFT -->
+    <div class="tl-item left">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">HPE StoreOnce · 2020 – 2021</p>
+        <h2 class="c-title">Okta SSO Integration</h2>
+        <p class="c-desc">End-to-end Okta SSO/OIDC integration: JWT authentication, JWKS key rotation, OpenID Connect Discovery, session revocation, and RBAC mapping. Also delivered enterprise-grade SSO for Booking.com — one of Europe's largest travel platforms.</p>
+        <div class="c-tags">
+          <span class="c-tag">Okta</span>
+          <span class="c-tag">OIDC</span>
+          <span class="c-tag">JWT · JWKS</span>
+          <span class="c-tag">RBAC</span>
+          <span class="c-tag">Session Management</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ LDAP Auth — RIGHT -->
+    <div class="tl-item right">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">HPE StoreOnce · 2019 – 2020</p>
+        <h2 class="c-title">LDAP-Based Authentication</h2>
+        <p class="c-desc">Directory-integrated login across distributed storage appliances. Resolved live LDAP issues during VR troubleshooting sessions with enterprise customers including Infosys, AT&amp;T, Tikehau Capital, and Coles.</p>
+        <div class="c-tags">
+          <span class="c-tag">LDAP</span>
+          <span class="c-tag">Directory Services</span>
+          <span class="c-tag teal">Enterprise Support</span>
+          <span class="c-tag teal">Live Troubleshooting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑦ AI Fitness Side Project — LEFT -->
+    <div class="tl-item left side-proj">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <span class="c-badge">★ Side Project</span>
+        <p class="c-when">Personal · 2023</p>
+        <h2 class="c-title">AI Fitness Recommendation System</h2>
+        <p class="c-desc">Microservices-based fitness app using Spring Boot, Spring Cloud, RabbitMQ, and React, delivering personalized workout recommendations via Google Gemini AI. All APIs secured with Keycloak OAuth2 and JWT validation across the microservices mesh.</p>
+        <div class="c-tags">
+          <span class="c-tag">Spring Boot</span>
+          <span class="c-tag">Keycloak</span>
+          <span class="c-tag">OAuth2 · JWT</span>
+          <span class="c-tag">Gemini AI</span>
+          <span class="c-tag">RabbitMQ</span>
+          <span class="c-tag">React</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑧ TRDDC — RIGHT -->
+    <div class="tl-item right">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">TRDDC, Tata · May 2017 – Mar 2019</p>
+        <h2 class="c-title">Security Research &amp; Gamification</h2>
+        <p class="c-desc">Built gamified security training tools — a phishing awareness game and a password hygiene game — and validated effectiveness through user studies. Published at CHI-PLAY 2018 (Melbourne) and JCSG Conference (Germany, Best Paper nominee). Awarded Special Initiative Award at TCS InfoSecurity Fest.</p>
+        <div class="c-tags">
+          <span class="c-tag teal">CHI-PLAY 2018</span>
+          <span class="c-tag teal">JCSG Best Paper</span>
+          <span class="c-tag">Java · JavaScript</span>
+          <span class="c-tag">UX Research</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑨ Education — LEFT (special) -->
+    <div class="tl-item left edu">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <p class="c-when">2013 – 2017</p>
+        <h2 class="c-title">Walchand College of Engineering</h2>
+        <p class="c-desc">B.Tech, Information Technology · CPI 7.8. 1st Runner-Up at John Deere Techno-Champ 2015. Best Project Awards for Semester 4 (ColorAura Billing) and Semester 5 (Trace It Out Inventory).</p>
+        <div class="c-tags">
+          <span class="c-tag teal">Sangli, India</span>
+          <span class="c-tag teal">B.Tech IT</span>
+          <span class="c-tag teal">CPI 7.8</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.tl-wrap -->
+</section>
+
+
+<!-- ════════════════════════════════════ FOOTER ════════════════════════════════════ -->
+<footer>
+  <a href="https://www.linkedin.com/in/sankalp-pandit" target="_blank" rel="noopener">LinkedIn</a>
+  &nbsp;·&nbsp; pandit.sankalp123@gmail.com
+  &nbsp;·&nbsp; +91-9373558987
+  &nbsp;·&nbsp; Pune, India
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const item = entry.target;
+      item.classList.add('visible');
+
+      // Ripple on the dot
+      const dot = item.querySelector('.tl-dot');
+      if (dot) {
+        dot.classList.add('pulse');
+        setTimeout(() => dot.classList.remove('pulse'), 800);
+      }
+
+      observer.unobserve(item);
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.tl-item').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
