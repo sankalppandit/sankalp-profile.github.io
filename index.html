@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sankalp Pandit — Java Backend &amp; IAM Engineer</title>
+  <title>Sankalp Pandit — Java Backend Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -22,6 +22,8 @@
       --txt:    #f1f5f9;
       --dim:    #94a3b8;
       --mut:    #475569;
+      --hpe:    #01A982;
+      --tcs:    #003366;
     }
 
     body {
@@ -75,7 +77,7 @@
 
     .h-name {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
       font-weight: 700;
       letter-spacing: -.035em;
       line-height: 1;
@@ -109,9 +111,8 @@
       animation: up .65s .46s ease forwards;
     }
 
-    /* ── Profile summary (NEW) ── */
     .h-summary {
-      font-size: clamp(.85rem, 1.8vw, .98rem);
+      font-size: clamp(.76rem, 1.5vw, .84rem);
       color: var(--dim);
       max-width: 600px;
       line-height: 1.78;
@@ -120,7 +121,6 @@
       animation: up .65s .54s ease forwards;
     }
 
-    /* ── Hero CTA links (NEW) ── */
     .hero-links {
       display: flex;
       gap: .75rem;
@@ -162,10 +162,7 @@
       flex-shrink: 0;
     }
 
-    .btn-link .btn-icon svg {
-      width: 15px;
-      height: 15px;
-    }
+    .btn-link .btn-icon svg { width: 15px; height: 15px; }
 
     .pills {
       display: flex;
@@ -220,6 +217,85 @@
     @keyframes breathe { 0%,100%{opacity:.25} 50%{opacity:1} }
     @keyframes up { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
 
+    /* ══════════════ CERTIFICATIONS ══════════════ */
+    .cert-sec {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 2rem 4rem;
+    }
+
+    .cert-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .cert-card {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: var(--surf);
+      border: 1px solid var(--bdr);
+      border-radius: 10px;
+      padding: .9rem 1.2rem;
+      min-width: 240px;
+      flex: 1 1 240px;
+      max-width: 310px;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .cert-card:hover {
+      border-color: rgba(99,102,241,.35);
+      box-shadow: 0 4px 20px rgba(99,102,241,.09);
+    }
+
+    .cert-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(99,102,241,.1);
+      border: 1px solid rgba(99,102,241,.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cert-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--indigo);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cert-body { display: flex; flex-direction: column; gap: .12rem; }
+
+    .cert-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--txt);
+    }
+
+    .cert-org {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      color: var(--indigo);
+      letter-spacing: .04em;
+    }
+
+    .cert-yr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem;
+      color: var(--mut);
+    }
+
     /* ══════════════ TIMELINE SECTION ══════════════ */
     .tl-sec {
       position: relative;
@@ -238,10 +314,9 @@
       margin-bottom: 3.5rem;
     }
 
-    /* ── Wrapper ── */
     .tl-wrap {
       position: relative;
-      max-width: 1400px;   /* FIX #1: was 940px */
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -253,11 +328,50 @@
       bottom: 0;
       width: 2px;
       transform: translateX(-50%);
-      background: linear-gradient(to bottom,
-        var(--indigo) 0%,
-        var(--cyan)   60%,
-        rgba(34,211,238,.12) 100%
-      );
+      background: linear-gradient(to bottom, var(--indigo) 0%, var(--cyan) 60%, rgba(34,211,238,.12) 100%);
+    }
+
+    /* ── Company separator ── */
+    .tl-sep {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.2rem 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sep-line {
+      flex: 1;
+      height: 1px;
+      background: var(--bdr);
+    }
+
+    .sep-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .48rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--bdr);
+      background: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .63rem;
+      color: var(--dim);
+      white-space: nowrap;
+      letter-spacing: .04em;
+    }
+
+    /* ── HPE logo SVG (green rect) ── */
+    .hpe-logo {
+      display: block;
+      border-radius: 3px;
+    }
+
+    /* ── TCS logo SVG (blue rect) ── */
+    .tcs-logo {
+      display: block;
+      border-radius: 3px;
     }
 
     /* ── Timeline Item ── */
@@ -269,19 +383,11 @@
       transition: opacity .55s ease, transform .55s ease;
     }
 
-    .tl-item.left {
-      margin-right: calc(50% + 38px);
-      transform: translateX(-28px);
-    }
-
-    .tl-item.right {
-      margin-left: calc(50% + 38px);
-      transform: translateX(28px);
-    }
-
+    .tl-item.left  { margin-right: calc(50% + 38px); transform: translateX(-28px); }
+    .tl-item.right { margin-left:  calc(50% + 38px); transform: translateX(28px); }
     .tl-item.visible { opacity: 1; transform: translateX(0); }
 
-    /* ── Dot ── */
+    /* ── Dot — starts invisible, fades in with delay (FIX #8) ── */
     .tl-dot {
       position: absolute;
       top: 22px;
@@ -291,7 +397,11 @@
       background: var(--bg);
       border: 2px solid var(--indigo);
       z-index: 3;
+      opacity: 0;
+      transition: opacity .4s ease .55s;
     }
+
+    .tl-item.visible .tl-dot { opacity: 1; }
 
     .tl-item.left  .tl-dot { right: -44px; }
     .tl-item.right .tl-dot { left:  -44px; }
@@ -366,7 +476,7 @@
     .tl-item.side-proj:hover .tl-card { border-color: rgba(245,158,11,.4); box-shadow: 0 6px 30px rgba(245,158,11,.07); }
     .tl-item.side-proj:hover .tl-card::before { background: linear-gradient(to right, var(--amber), rgba(245,158,11,.3)); opacity: 1; }
 
-    /* ── Card Header: icon + company badge (NEW) ── */
+    /* ── Card Header ── */
     .c-head {
       display: flex;
       align-items: center;
@@ -400,31 +510,23 @@
 
     .tl-item.edu .c-icon { background: rgba(34,211,238,.08); border-color: rgba(34,211,238,.2); }
     .tl-item.edu .c-icon svg { stroke: var(--cyan); }
-
     .tl-item.side-proj .c-icon { background: rgba(245,158,11,.08); border-color: rgba(245,158,11,.22); }
     .tl-item.side-proj .c-icon svg { stroke: var(--amber); }
 
-    /* ── Company badge (NEW) ── */
+    /* ── Company badge ── */
     .c-co {
       display: inline-flex;
       align-items: center;
-      gap: .32rem;
+      gap: .38rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: .59rem;
       letter-spacing: .04em;
-      padding: .2rem .6rem .2rem .35rem;
+      padding: .2rem .6rem .2rem .38rem;
       border-radius: 999px;
       border: 1px solid var(--bdr);
       background: rgba(255,255,255,.03);
       color: var(--dim);
       white-space: nowrap;
-    }
-
-    .co-fav {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
-      object-fit: contain;
     }
 
     /* ── Card Content ── */
@@ -467,7 +569,7 @@
       margin-bottom: .76rem;
     }
 
-    .c-tags { display: flex; flex-wrap: wrap; gap: .28rem; }
+    .c-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: .55rem; }
 
     .c-tag {
       font-family: 'JetBrains Mono', monospace;
@@ -483,6 +585,34 @@
       background: rgba(34,211,238,.05);
       border-color: rgba(34,211,238,.16);
       color: var(--cyan);
+    }
+
+    /* ── Publication link ── */
+    .c-pub {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem;
+      color: var(--indigo);
+      text-decoration: none;
+      letter-spacing: .03em;
+      padding: .2rem 0;
+      border-bottom: 1px solid rgba(99,102,241,.25);
+      transition: color .2s, border-color .2s;
+    }
+
+    .c-pub:hover { color: var(--cyan); border-color: var(--cyan); }
+
+    .c-pub svg {
+      width: 11px;
+      height: 11px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
     }
 
     /* ── Footer ── */
@@ -521,11 +651,14 @@
 
       .tl-item.left::after,
       .tl-item.right::after { right: auto !important; left: -22px !important; width: 22px; }
+
+      .cert-card { max-width: 100%; }
     }
 
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       .tl-item { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .tl-dot { opacity: 1 !important; transition: none !important; }
       .h-eyebrow, .h-name, .h-role, .h-meta, .h-summary, .hero-links, .pills, .scroll-cue { opacity: 1 !important; animation: none !important; }
       .s-line { animation: none; }
     }
@@ -538,16 +671,15 @@
   <p class="h-eyebrow">Portfolio · Career Timeline</p>
   <h1 class="h-name">Sankalp Pandit</h1>
   <p class="h-role">Java Backend Engineer &amp; <strong>IAM Specialist</strong></p>
-  <p class="h-meta">9+ years &nbsp;·&nbsp; Hewlett Packard Enterprise &nbsp;·&nbsp; Pune, India</p>
+  <p class="h-meta">Hewlett Packard Enterprise &nbsp;·&nbsp; Pune, India &nbsp;·&nbsp; +91-9373558987</p>
 
   <p class="h-summary">
     Experienced Java backend engineer with 9+ years at product-based companies, 
-    delivering high-quality systems across authentication, data protection, API design, and 
-    full feature lifecycle development.
+    delivering high-quality systems across authentication, 
+    data protection, API design, and full feature lifecycle development.
   </p>
 
   <div class="hero-links">
-    <!-- LinkedIn -->
     <a class="btn-link" href="https://www.linkedin.com/in/sankalp-pandit" target="_blank" rel="noopener" aria-label="LinkedIn profile">
       <span class="btn-icon">
         <svg viewBox="0 0 24 24" fill="var(--txt)" xmlns="http://www.w3.org/2000/svg">
@@ -556,7 +688,6 @@
       </span>
       linkedin.com/in/sankalp-pandit
     </a>
-    <!-- Email -->
     <a class="btn-link" href="mailto:pandit.sankalp123@gmail.com" aria-label="Send email">
       <span class="btn-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="var(--txt)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -588,127 +719,39 @@
 </section>
 
 
+<!-- ══════════════════════════════ CERTIFICATIONS ══════════════════════════════ -->
 <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
 <section class="tl-sec">
-  <p class="tl-label">Career Timeline &nbsp;—&nbsp; Present → Origin</p>
 
   <div class="tl-wrap">
 
-    <!-- ① Security Score Dashboard — LEFT -->
-    <div class="tl-item left">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="c-head">
-          <div class="c-icon" title="Security Posture">
-            <!-- Shield icon -->
-            <svg viewBox="0 0 24 24"><path d="M12 3L4 7v5c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V7L12 3z"/></svg>
-          </div>
-          <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=hpe.com&sz=16" alt="HPE" />
-            HPE · StoreOnce
-          </div>
-        </div>
-        <p class="c-when">2023 – Present</p>
-        <h2 class="c-title">Security Score Dashboard</h2>
-        <p class="c-desc">Automated dashboard running 36 checks across access control, platform security, threat detection, and encryption. Produces a weighted 0–100 score aligned with NIST SP800-63B — giving customers instant visibility into their security posture.</p>
-        <div class="c-tags">
-          <span class="c-tag">NIST SP800-63B</span>
-          <span class="c-tag">Security Scoring</span>
-          <span class="c-tag">Java</span>
-          <span class="c-tag">REST APIs</span>
-        </div>
+    <!-- ═══ HPE SEPARATOR ═══ -->
+    <div class="tl-sep">
+      <div class="sep-line"></div>
+      <div class="sep-pill">
+        <svg class="hpe-logo" viewBox="0 0 44 18" width="44" height="18" xmlns="http://www.w3.org/2000/svg">
+          <rect width="44" height="18" rx="3" fill="#01A982"/>
+          <text x="22" y="13" font-family="Arial,sans-serif" font-weight="800" font-size="9.5" fill="white" text-anchor="middle" letter-spacing="0.8">HPE</text>
+        </svg>
+        Hewlett Packard Enterprise &nbsp;·&nbsp; 2019 – Present
       </div>
+      <div class="sep-line"></div>
     </div>
 
-    <!-- ② CyberVault — RIGHT -->
-    <div class="tl-item right">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="c-head">
-          <div class="c-icon" title="Data Vault">
-            <!-- Lock icon -->
-            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-          <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=hpe.com&sz=16" alt="HPE" />
-            HPE · StoreOnce
-          </div>
-        </div>
-        <p class="c-when">2022 – 2023</p>
-        <h2 class="c-title">CyberVault</h2>
-        <p class="c-desc">RESTful APIs for a data isolation product enabling customers to securely isolate backup data from external threats. Covered vault mode activation, copy-mapping CRUD, and scheduled sync — built with security-by-design principles throughout.</p>
-        <div class="c-tags">
-          <span class="c-tag">REST APIs</span>
-          <span class="c-tag">Data Isolation</span>
-          <span class="c-tag">Security-by-Design</span>
-          <span class="c-tag">PostgreSQL</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ③ Delayed Delete — LEFT -->
-    <div class="tl-item left">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="c-head">
-          <div class="c-icon" title="Delayed Delete">
-            <!-- Clock icon -->
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=hpe.com&sz=16" alt="HPE" />
-            HPE · StoreOnce
-          </div>
-        </div>
-        <p class="c-when">2022</p>
-        <h2 class="c-title">Delayed Delete — Ransomware Protection</h2>
-        <p class="c-desc">State machine enforcing mandatory cooling-off periods before data destruction can proceed. Prevents both accidental and malicious data loss across enterprise backup environments.</p>
-        <div class="c-tags">
-          <span class="c-tag">State Machine</span>
-          <span class="c-tag">Ransomware Protection</span>
-          <span class="c-tag">Java</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ④ Dual Authorization — RIGHT -->
-    <div class="tl-item right">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="c-head">
-          <div class="c-icon" title="Dual Authorization">
-            <!-- Two users icon -->
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=hpe.com&sz=16" alt="HPE" />
-            HPE · StoreOnce
-          </div>
-        </div>
-        <p class="c-when">2021</p>
-        <h2 class="c-title">Dual Authorization Framework</h2>
-        <p class="c-desc">Two-person approval framework for critical operations (store deletion, vault settings, compliance mode). PENDING → APPROVED → EXECUTED / REJECTED / EXPIRED state machine with authorization code generation and full audit logging.</p>
-        <div class="c-tags">
-          <span class="c-tag">Authorization</span>
-          <span class="c-tag">State Machine</span>
-          <span class="c-tag">Audit Logging</span>
-          <span class="c-tag">Compliance</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ⑤ Okta SSO — LEFT -->
+    <!-- ① Okta SSO — LEFT -->
     <div class="tl-item left">
       <div class="tl-dot"></div>
       <div class="tl-card">
         <div class="c-head">
           <div class="c-icon" title="SSO / Identity">
-            <!-- Key icon -->
             <svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
           </div>
           <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=hpe.com&sz=16" alt="HPE" />
-            HPE · StoreOnce
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#01A982"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">HPE</text>
+            </svg>
+            StoreOnce
           </div>
         </div>
         <p class="c-when">2020 – 2021</p>
@@ -724,13 +767,123 @@
       </div>
     </div>
 
+    <!-- ② CyberVault — RIGHT -->
+    <div class="tl-item right">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c-head">
+          <div class="c-icon" title="Data Vault">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div class="c-co">
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#01A982"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">HPE</text>
+            </svg>
+            StoreOnce
+          </div>
+        </div>
+        <p class="c-when">2022 – 2023</p>
+        <h2 class="c-title">CyberVault</h2>
+        <p class="c-desc">RESTful APIs for a data isolation product enabling customers to securely isolate backup data from external threats. Covered vault mode activation, copy-mapping CRUD, and scheduled sync — built with security-by-design principles throughout.</p>
+        <div class="c-tags">
+          <span class="c-tag">REST APIs</span>
+          <span class="c-tag">Data Isolation</span>
+          <span class="c-tag">Security-by-Design</span>
+          <span class="c-tag">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ Dual Authorization — LEFT -->
+    <div class="tl-item left">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c-head">
+          <div class="c-icon" title="Dual Authorization">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="c-co">
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#01A982"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">HPE</text>
+            </svg>
+            StoreOnce
+          </div>
+        </div>
+        <p class="c-when">2021</p>
+        <h2 class="c-title">Dual Authorization Framework</h2>
+        <p class="c-desc">Two-person approval framework for critical operations (store deletion, vault settings, compliance mode). PENDING → APPROVED → EXECUTED / REJECTED / EXPIRED state machine with authorization code generation and full audit logging.</p>
+        <div class="c-tags">
+          <span class="c-tag">Authorization</span>
+          <span class="c-tag">State Machine</span>
+          <span class="c-tag">Audit Logging</span>
+          <span class="c-tag">Compliance</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ Security Score Dashboard — RIGHT -->
+    <div class="tl-item right">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c-head">
+          <div class="c-icon" title="Security Posture">
+            <svg viewBox="0 0 24 24"><path d="M12 3L4 7v5c0 5.25 3.5 10.15 8 11.5 4.5-1.35 8-6.25 8-11.5V7L12 3z"/></svg>
+          </div>
+          <div class="c-co">
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#01A982"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">HPE</text>
+            </svg>
+            StoreOnce
+          </div>
+        </div>
+        <p class="c-when">2023 – Present</p>
+        <h2 class="c-title">Security Score Dashboard</h2>
+        <p class="c-desc">Automated dashboard running 36 checks across access control, platform security, threat detection, and encryption. Produces a weighted 0–100 score aligned with NIST SP800-63B — giving customers instant visibility into their security posture.</p>
+        <div class="c-tags">
+          <span class="c-tag">NIST SP800-63B</span>
+          <span class="c-tag">Security Scoring</span>
+          <span class="c-tag">Java</span>
+          <span class="c-tag">REST APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ Delayed Delete — LEFT -->
+    <div class="tl-item left">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c-head">
+          <div class="c-icon" title="Delayed Delete">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="c-co">
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#01A982"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">HPE</text>
+            </svg>
+            StoreOnce
+          </div>
+        </div>
+        <p class="c-when">2022</p>
+        <h2 class="c-title">Delayed Delete — Ransomware Protection</h2>
+        <p class="c-desc">State machine enforcing mandatory cooling-off periods before data destruction can proceed. Prevents both accidental and malicious data loss across enterprise backup environments.</p>
+        <div class="c-tags">
+          <span class="c-tag">State Machine</span>
+          <span class="c-tag">Ransomware Protection</span>
+          <span class="c-tag">Java</span>
+        </div>
+      </div>
+    </div>
+
     <!-- ⑥ LDAP Auth — RIGHT -->
     <div class="tl-item right">
       <div class="tl-dot"></div>
       <div class="tl-card">
         <div class="c-head">
           <div class="c-icon" title="Directory Auth">
-            <!-- Network / directory icon -->
             <svg viewBox="0 0 24 24">
               <rect x="1" y="3" width="7" height="5" rx="1"/>
               <rect x="16" y="3" width="7" height="5" rx="1"/>
@@ -740,8 +893,11 @@
             </svg>
           </div>
           <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=hpe.com&sz=16" alt="HPE" />
-            HPE · StoreOnce
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#01A982"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">HPE</text>
+            </svg>
+            StoreOnce
           </div>
         </div>
         <p class="c-when">2019 – 2020</p>
@@ -762,7 +918,6 @@
       <div class="tl-card">
         <div class="c-head">
           <div class="c-icon" title="AI / Side Project">
-            <!-- Lightning bolt / AI icon -->
             <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
           <span class="c-badge">★ Side Project</span>
@@ -781,39 +936,89 @@
       </div>
     </div>
 
-    <!-- ⑧ TRDDC Research — RIGHT -->
+    <!-- ═══ TCS SEPARATOR ═══ -->
+    <div class="tl-sep">
+      <div class="sep-line"></div>
+      <div class="sep-pill">
+        <svg class="tcs-logo" viewBox="0 0 42 18" width="42" height="18" xmlns="http://www.w3.org/2000/svg">
+          <rect width="42" height="18" rx="3" fill="#003366"/>
+          <text x="21" y="13" font-family="Arial,sans-serif" font-weight="800" font-size="9.5" fill="white" text-anchor="middle" letter-spacing="0.8">TCS</text>
+        </svg>
+        Tata Consultancy Services · TRDDC &nbsp;·&nbsp; 2017 – 2019
+      </div>
+      <div class="sep-line"></div>
+    </div>
+
+    <!-- ⑧ Phishing Research Paper — RIGHT -->
     <div class="tl-item right">
       <div class="tl-dot"></div>
       <div class="tl-card">
         <div class="c-head">
-          <div class="c-icon" title="Research">
-            <!-- Open book icon -->
+          <div class="c-icon" title="Research Publication">
             <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
           </div>
           <div class="c-co">
-            <img class="co-fav" src="https://www.google.com/s2/favicons?domain=tcs.com&sz=16" alt="TCS" />
-            TCS · TRDDC
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#003366"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">TCS</text>
+            </svg>
+            TRDDC · Research
           </div>
         </div>
-        <p class="c-when">May 2017 – Mar 2019</p>
-        <h2 class="c-title">Security Research &amp; Gamification</h2>
-        <p class="c-desc">Built gamified security training tools — a phishing awareness game and a password hygiene game — validated through user studies. Published at CHI-PLAY 2018 (Melbourne) and JCSG Conference (Germany, Best Paper nominee). Awarded Special Initiative Award at TCS InfoSecurity Fest.</p>
+        <p class="c-when">CHI-PLAY 2018 · Melbourne</p>
+        <h2 class="c-title">Phishing Awareness Game</h2>
+        <p class="c-desc">Designed and built a gamified tool to improve phishing detection skills in enterprise employees. Validated effectiveness through structured user studies. Published at CHI-PLAY 2018, Extended Abstracts — ACM Conference on Human Factors in Computing Systems.</p>
         <div class="c-tags">
           <span class="c-tag teal">CHI-PLAY 2018</span>
-          <span class="c-tag teal">JCSG Best Paper</span>
           <span class="c-tag">Java · JavaScript</span>
           <span class="c-tag">UX Research</span>
+          <span class="c-tag">Gamification</span>
         </div>
+        <a class="c-pub" href="https://dl.acm.org/doi/10.1145/3270316.3273042" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          dl.acm.org · Read Publication
+        </a>
       </div>
     </div>
 
-    <!-- ⑨ Education — LEFT -->
-    <div class="tl-item left edu">
+    <!-- ⑨ Password Awareness Paper — LEFT -->
+    <div class="tl-item left">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c-head">
+          <div class="c-icon" title="Research Publication">
+            <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <div class="c-co">
+            <svg viewBox="0 0 36 14" width="36" height="14" xmlns="http://www.w3.org/2000/svg">
+              <rect width="36" height="14" rx="2" fill="#003366"/>
+              <text x="18" y="10.5" font-family="Arial,sans-serif" font-weight="800" font-size="7.5" fill="white" text-anchor="middle" letter-spacing="0.5">TCS</text>
+            </svg>
+            TRDDC · Research
+          </div>
+        </div>
+        <p class="c-when">JCSG 2018 · Germany · Best Paper Nominee</p>
+        <h2 class="c-title">Password Hygiene Awareness Game</h2>
+        <p class="c-desc">Built a gamified security training tool focused on creating awareness about password hygiene and safe practices among enterprise users. Nominated for Best Paper at the Joint Conference on Serious Games (JCSG), Germany. Awarded Special Initiative Award at TCS InfoSecurity Fest.</p>
+        <div class="c-tags">
+          <span class="c-tag teal">JCSG Best Paper Nominee</span>
+          <span class="c-tag">Java · JavaScript</span>
+          <span class="c-tag">Security Awareness</span>
+          <span class="c-tag">Gamification</span>
+        </div>
+        <a class="c-pub" href="https://link.springer.com/chapter/10.1007/978-3-030-02762-9_8" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          springer.com · Read Publication
+        </a>
+      </div>
+    </div>
+
+    <!-- ⑩ Education — RIGHT -->
+    <div class="tl-item right edu">
       <div class="tl-dot"></div>
       <div class="tl-card">
         <div class="c-head">
           <div class="c-icon" title="Education">
-            <!-- Graduation cap icon -->
             <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
         </div>
@@ -832,6 +1037,36 @@
 </section>
 
 
+<!-- ══════════════════════════════ CERTIFICATIONS ══════════════════════════════ -->
+<section class="cert-sec">
+  <p class="tl-label">Certifications</p>
+  <div class="cert-grid">
+
+    <!-- Cert 1: replace with your actual certification -->
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 13l-4 8 7-3 7 3-4-8"/></svg>
+      </div>
+      <div class="cert-body">
+        <p class="cert-name">Machine Learning – by Andrew Ng</p>
+        <p class="cert-org">Stanford University (Coursera)</p>
+      </div>
+    </div>
+
+    <!-- Cert 2: replace with your actual certification -->
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M9 13l-4 8 7-3 7 3-4-8"/></svg>
+      </div>
+      <div class="cert-body">
+        <p class="cert-name">Neural Networks and Deep Learning - by Andrew Ng</p>
+        <p class="cert-org">DeepLearning.AI</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
 <footer>
   <a href="https://www.linkedin.com/in/sankalp-pandit" target="_blank" rel="noopener">linkedin.com/in/sankalp-pandit</a>
@@ -846,11 +1081,16 @@
       if (!entry.isIntersecting) return;
       const item = entry.target;
       item.classList.add('visible');
+
+      // Dot pulse fires after the dot fades in (0.55s delay in CSS)
       const dot = item.querySelector('.tl-dot');
       if (dot) {
-        dot.classList.add('pulse');
-        setTimeout(() => dot.classList.remove('pulse'), 800);
+        setTimeout(() => {
+          dot.classList.add('pulse');
+          setTimeout(() => dot.classList.remove('pulse'), 800);
+        }, 650);
       }
+
       observer.unobserve(item);
     });
   }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
